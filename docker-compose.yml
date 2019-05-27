@@ -1,0 +1,91 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    healthcheck:
+      test: "exit 0"
+
+  authenticationservice:
+    image: tnagaraj/authenticationservice:v3
+    restart: always
+    network_mode: host
+    container_name: authenticationservicecontainer
+    depends_on:
+      - mysql
+      - eurekaserver
+      - rabbitmq
+    ports:
+      - 9001:9001
+    healthcheck:
+      test: "exit 0"
+
+  usertrackservice:
+    image: tnagaraj/usertrackservice:v3
+    restart: always
+    network_mode: host
+    container_name: usertrackservicecontainer
+    depends_on:
+      - mongo
+      - eurekaserver
+      - rabbitmq
+    ports:
+      - 9002:9002
+    healthcheck:
+      test: "exit 0"
+
+  eurekaserver:
+    image: tnagaraj/eurekaserver:v2
+    restart: always
+    network_mode: host
+    container_name: eurekaservercontainer
+    ports:
+      - 9003:9003
+    healthcheck:
+      test: "exit 0"
+
+  zuulservice:
+    image: tnagaraj/zuulservice:v2
+    restart: always
+    network_mode: host
+    container_name: zuulservicecontainer
+    depends_on:
+      - eurekaserver
+    ports:
+      - 9005:9005
+    healthcheck:
+      test: "exit 0"
+
+  musicapp:
+    image: tnagaraj/musixapp:v3
+    network_mode: host
+    container_name: musicappcontainer
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "exit 0"
+
+  mongo:
+    image: mongo:3.2-jessie
+    network_mode: host
+    container_name: mongocontainer
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: "exit 0"
+
+  mysql:
+    image: mysql:5.5
+    ports:
+      - 3306:3306
+    container_name: mysqlcontainer
+    network_mode: host
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: userDb
+      MYSQL_USER: approot
+      MYSQL_PASSWORD: root123
+    healthcheck:
+      test: "exit 0"

@@ -1,0 +1,17 @@
+.material-icons{
+    font-size: 2.5em;
+}
+.brand{
+    margin-right:auto;
+}
+
+.mat-toolbar{
+    display: flex;
+}
+.mat-menu-item{
+     font-family: 'Crimson Text', serif;
+    font-size: 1.2em;
+}
+.mat-button{
+    font-size:1.2em;
+}

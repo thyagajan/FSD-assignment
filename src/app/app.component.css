@@ -1,0 +1,10 @@
+.container{
+    min-height: 100vh;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    flex:1;
+}

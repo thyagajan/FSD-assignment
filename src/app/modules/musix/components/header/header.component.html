@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="brand"><i class="material-icons">queue_music</i></span>
+      <button class = "mat-button" mat-button [matMenuTriggerFor]="menu">Track</button>
+      <mat-menu #menu="matMenu">
+        <button class="mat-menu-item-india" [routerLink]="['India']" mat-menu-item>India</button>
+        <button class ="mat-menu-item-spain" [routerLink]="['Spain']" mat-menu-item>Spain</button>
+      </mat-menu>
+      <button class="mat-button-wishlist" [routerLink]="['WishList']" mat-button>WishList</button>
+      <button class="mat-button-logout" (click)="logout()" mat-button>Logout</button>
+ 
+    </mat-toolbar-row>
+</mat-toolbar>
+

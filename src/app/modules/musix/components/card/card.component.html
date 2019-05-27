@@ -1,0 +1,33 @@
+<mat-card class="tracks-card" color="accent">
+  <mat-card-header class="header">
+    <mat-card-title>{{track.name}}</mat-card-title>
+    <mat-card-subtitle>{{track.artist.name}}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="image" mat-card-image [src]='track.artist.image.url' alt="Track Image">
+ 
+  <mat-card-actions>
+    <button *ngIf = "!isWishListPage" class="addButton" (click)="emitAddWishListEvent(track)" 
+    matTooltip="Add To Favorites" mat-mini-fab color="primary">
+     <a >
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+     </a> 
+    </button>
+    <button *ngIf = "isWishListPage" class="deleteButton" (click)="emitDeleteWishListEvent(track)" 
+    matTooltip="Remove From Favorites" mat-mini-fab color="primary">
+      <a >
+         <mat-icon aria-label="">delete</mat-icon>
+      </a> 
+     </button>
+     <button *ngIf = "isWishListPage" class="updateButton" (click)="updateComment()" 
+    matTooltip="Update Comments" mat-mini-fab color="primary">
+      <a >
+         <mat-icon aria-label="">create</mat-icon>
+      </a> 
+     </button>
+    <button class="playButton" matTooltip="Play Music" mat-mini-fab color="primary">
+      <a [href] = 'track.url'>
+          <i class="material-icons">play_circle_filled</i>
+      </a>
+    </button>
+  </mat-card-actions>
+</mat-card>

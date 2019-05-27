@@ -1,0 +1,28 @@
+image: 'maven:3-jdk-8'
+stages:
+  - test
+  - build
+services:
+  - 'mysql:5.5'
+  - 'mongo:3.4-jessie'
+variables:
+  MONGO_DB_NAME: "userTrackDb"
+  MONGO_DB_URL: "mongodb://mongo/userTrackDb"
+  MYSQL_DATABASE: "userDb"
+  MYSQL_URL: "jdbc:mysql://mysql/userDb"
+  MYSQL_USER: "approot"
+  MYSQL_PASSWORD: "root"
+  MYSQL_ROOT_PASSWORD: "root"
+cache:
+  paths:
+    - .m2/repository
+    - target
+maven-test:
+  stage: test
+  script: "mvn test"
+maven-build:
+  stage: build
+  script: "mvn package"
+  artifacts:
+    paths:
+      - target/*.jar

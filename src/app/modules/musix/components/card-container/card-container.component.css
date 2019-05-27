@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom:10vh;
+}
+.mat-form-field-label{
+    color:#fff;
+}
+.material-icons{
+    color:#fff;
+}
+.mat-form-field{
+    padding-left: 75vw;
+    color:#fff;
+}
+.matInput{
+    color:#fff;
+}
+.label{
+    color:#fff;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    columns:#fff !important;
+}

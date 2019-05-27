@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,body{
+    width:100vw;
+    overflow-x: hidden;
+}
+
+@media(max-width:767px){
+    .mat-button{
+        font-size: 0.9em !important;
+    }
+
+    .tracks-card{
+        height:40vh !important;
+        width:60vw !important;
+    }
+
+    .image{
+        height:35vh !important;
+        width:45vw !important;
+    }
+
+    .field{
+        padding-left: 18vw !important;
+    }
+
+    .mat-card{
+        width:70vw !important;
+    }
+    .my-form{
+        width:50vw !important;
+    }
+}
+
+@media(min-width:768px) and (max-width:900px){
+    .my-form{
+        width:50vw !important;
+    }
+
+    .mat-button{
+        font-size: 0.9em !important;
+    }
+
+    .mat-card{
+        width:70vw !important;
+        height: 40vh !important;
+        margin-bottom: 20vh !important;
+    }
+
+    .tracks-card{
+        height:20vh !important;
+        width:25vw !important;
+    }
+
+
+    .field{
+        padding-left: 38vw !important;
+    }
+}

@@ -1,0 +1,45 @@
+.tracks-card{
+    display: flex;
+    flex-direction: column;
+    height:45vh;
+    width:20vw;
+    margin: 1em;
+    text-align: center;
+}
+
+
+.image{
+    height: 25vh;
+    width: 15vw;
+    margin: auto;
+
+}
+
+.header{
+    margin:auto;
+    color: purple;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    /*font-family: 'Crimson Text', serif;*/
+}
+
+.mat-card-header .mat-card-title {
+    font-size: 1em;
+}
+
+.mat-card-subtitle{
+    color:deeppink;
+}
+
+.mat-fab.mat-accent,.mat-flat-button.mat-accent,.mat-mini-fab.mat-accent,.mat-raised-button.mat-accent{
+    margin-left: 4vw;
+    
+}
+
+.mat-icons{
+    color:#fff;
+}
+
+.material-icons{
+    color:#fff;
+}

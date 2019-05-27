@@ -1,0 +1,23 @@
+mat-card{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width:40vw;
+    text-align: center;
+    margin:auto;
+    margin-bottom: 10vh;
+}
+mat-card-title{
+    padding-left:15vw;
+    padding-top :3vh;
+}
+.my-form{
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    width:20vw;
+}
+
+mat-icon{
+    margin-right: 1em;
+}
