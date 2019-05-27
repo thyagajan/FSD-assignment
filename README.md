@@ -1,27 +1,47 @@
-# MusixApplication
+#MusixApplication
+A web application to keep track of your favorite tracks. This app is developed using Angular with the backend support of 
+few microservices developed in spring boot. All the images are dockerized and docker compose file can be used to get this app up and running.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+for details please check the docker-compose.yml file.
 
-## Development server
+After running the command "docker-compose up", verify if all the services are healthy by checking "docker ps -a".
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Then the aplication can be accessed at http://localhost:8080
 
-## Code scaffolding
+#Microservices
+Our application is using the following microservices.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    #AuthenticationService: Port  9001
+        To authenticate and provide JWT token to the authorized users.
+    
+        For API documentation refer:
+            http://localhost:9001/swagger-ui.html
+        
+        It is using MYSQL DB to store the user name and password. MySql DB can be accessed by
+        mysql -u approot -p 
+        (provide the password as per the docker file)
+    
+        
+    #UserTrackService : port 9002
+        To manage the tracks for a particular user.
+        
+        For API documentation refer
+            http://localhost:9002/swagger-ui.html
+            
+        This service is using MongoDB to store the tracks.
+        
+    #EurekaServer: port 9003
+        Netflix Eureka Discovery server and currently authentication service and usertrackservice are registered as its clients.
+        
+    #ZuulService: port 9005
+        Netflix proxy server for the frontend to communicate with the services.
+        
+    #RabbitMq : port 15672
+        For the interservice communication we are using rabbit MQ with the exchange "user_exchange" and two queues
+        "user_queue" - to pass the user data.
+        "track_queue" - to pass the track data.
 
-## Build
+    #MySQL runs on the port 3306
+    
+    #MongoDB runs on the port 27017
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
